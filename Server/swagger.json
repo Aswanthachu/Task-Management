@@ -1,0 +1,401 @@
+{
+	"basePath": "/",
+	"consumes": [
+		"application/json"
+	],
+	"definitions": {},
+	"info": {
+		"title": "disrt_live",
+		"version": "1.0.0",
+		"description": "By Immensa",
+		"license": {
+			"name": "UNLICENSED"
+		},
+		"contact": {
+			"name": "Immensa"
+		}
+	},
+	"paths": {
+		"/api/branch/all": {
+			"get": {
+				"operationId": "GetAllBranches",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"properties": {
+								"error": {
+									"type": "string"
+								},
+								"data": {
+									"additionalProperties": true
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"Branch"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "countryCode",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/api/branch/allAdmin": {
+			"get": {
+				"operationId": "GetAllAdminView",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"properties": {
+								"error": {
+									"type": "string"
+								},
+								"data": {
+									"additionalProperties": true
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"Branch"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "param",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"in": "query",
+						"name": "countryCode",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"in": "query",
+						"name": "stateCode",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"in": "query",
+						"name": "branchType",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"in": "query",
+						"name": "sortBy",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"in": "query",
+						"name": "order",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"default": 1,
+						"in": "query",
+						"name": "page",
+						"required": false,
+						"format": "double",
+						"type": "number"
+					},
+					{
+						"default": 10,
+						"in": "query",
+						"name": "limit",
+						"required": false,
+						"format": "double",
+						"type": "number"
+					}
+				]
+			}
+		},
+		"/api/branch/{id}/fetch": {
+			"get": {
+				"operationId": "GetById",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"properties": {
+								"error": {
+									"type": "string"
+								},
+								"data": {
+									"additionalProperties": true
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"Branch"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/api/branch/countries": {
+			"get": {
+				"operationId": "GetCountry",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"properties": {
+								"error": {
+									"type": "string"
+								},
+								"data": {
+									"additionalProperties": true
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"Branch"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/api/branch/states": {
+			"get": {
+				"operationId": "GetStateByCountry",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"properties": {
+								"error": {
+									"type": "string"
+								},
+								"data": {
+									"additionalProperties": true
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"Branch"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "countryCode",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/api/branch/{id}": {
+			"put": {
+				"operationId": "UpdateBranchById",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"properties": {
+								"error": {
+									"type": "string"
+								},
+								"data": {
+									"properties": {
+										"message": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"message"
+									],
+									"type": "object"
+								}
+							},
+							"type": "object"
+						},
+						"examples": {
+							"application/json": {
+								"countryState": {
+									"stateCode": "DXB",
+									"stateName": "Dubai",
+									"countryCode": "AE",
+									"countryName": "United Arab Emirates"
+								},
+								"name": "Branch Name",
+								"address": "123 Main St",
+								"contactNo": "123-456-7890",
+								"telephoneNo": "987-654-3210",
+								"emailId": "branch@example.com",
+								"hoursToGetReady": 2,
+								"description": "Branch description",
+								"message": "Branch message",
+								"googleLocationUrl": "https://maps.google.com/...",
+								"branchType": {
+									"branchTypeId": "12345678-1234-1234-1234-123456789abc",
+									"name": "Branch Type Name",
+									"attachment": {
+										"attachmentId": "98765432-4321-4321-4321-210987654321",
+										"imageString": "base64-encoded-image"
+									}
+								},
+								"branchOfficeTiming": [
+									{
+										"day": "1",
+										"open": "09:00",
+										"close": "18:00"
+									}
+								],
+								"attachment": {
+									"attachmentId": "98765432-4321-4321-4321-210987654321",
+									"imageString": "base64-encoded-image"
+								},
+								"specialBusinessHours": [],
+								"isDocumentRequired": true,
+								"erpSyncDate": "2024-03-30T12:00:00Z",
+								"modifiedOn": "2024-03-30T12:00:00Z",
+								"isActive": true,
+								"isDeleted": false
+							}
+						}
+					}
+				},
+				"consumes": [
+					"application/json"
+				],
+				"tags": [
+					"Branch"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "updateData",
+						"required": true,
+						"schema": {
+							"type": "object"
+						}
+					}
+				]
+			},
+			"delete": {
+				"operationId": "DeleteById",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"properties": {
+								"error": {
+									"type": "string"
+								},
+								"data": {
+									"properties": {
+										"message": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"message"
+									],
+									"type": "object"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"Branch"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		}
+	},
+	"produces": [
+		"application/json"
+	],
+	"swagger": "2.0",
+	"securityDefinitions": {
+		"apiKey": {
+			"type": "apiKey",
+			"name": "X-API-Key",
+			"in": "header"
+		},
+		"clientId": {
+			"type": "apiKey",
+			"name": "Client-Id",
+			"in": "header"
+		},
+		"bearerAuth": {
+			"type": "apiKey",
+			"name": "Authorization",
+			"in": "header"
+		}
+	}
+}
